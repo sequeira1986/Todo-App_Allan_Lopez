@@ -1,20 +1,54 @@
-package com.example.TodoApp.controlller;
+package com.TodoApp.controlller;
 
-import com.example.TodoApp.repository.TodoRepository;
-import com.example.TodoApp.repository.UserRepository;
-import com.example.TodoApp.request.AddTodoRequest;
-import com.example.TodoApp.request.AddUserRequest;
-import model.Todo;
-import model.User;
+import com.TodoApp.repository.TodoRepository;
+import com.TodoApp.repository.UserRepository;
+import com.TodoApp.request.AddTodoRequest;
+import com.TodoApp.request.AddUserRequest;
+import com.TodoApp.model.Todo;
+import com.TodoApp.model.User;
+import com.TodoApp.services.TodoExportServices;
+import com.TodoApp.services.UserExportService;
+import com.TodoApp.services.UserServices;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.NoSuchElementException;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping(value = "/users", produces = MediaType.APPLICATION_JSON_VALUE)
+@Slf4j
 public class UserController {
-    private UserRepository userRepository;
-   private TodoRepository todoRepository;
+    @Autowired
+   UserServices userServices;
+   @Autowired
+    UserExportService userExportService;
+   @Autowired
+    TodoExportServices todoExportServices;
+
+    @Value("${menoAplikacie}")
+    String menoAplikacie;
+    @Value("${adresar}")
+    String adresar;
+
+    @Tag(name = "Testing")
+    @GetMapping(value = "/test/{id}")
+    public ResponseEntity<String> test(@PathVariable("id")Long id,
+                                @RequestParam(value = "filter", required = false) String filter,
+                                       @RequestBody(required = false) String body)  {
+
+        if (filter == null)
+            return ResponseEntity.badRequest().body("Chybne data");
+
+        if (body == null)
+            return ResponseEntity.badRequest().body("Chyba request body");
+
+        return ResponseEntity.ok("OK");
+
     public UserController(UserRepository userRepository, TodoRepository todoRepository) {
         this.userRepository = userRepository;
         this.todoRepository = todoRepository;
@@ -28,8 +62,8 @@ public class UserController {
     @PostMapping
     public User addUser(@RequestBody AddUserRequest userRequest){
         User user = new User();
-        user.setUsername(userRequest.getUsername());
-        user.setPassword(userRequest.getPassword());
+        //user.setUsername(userRequest.getUsername());
+        //user.setPassword(userRequest.getPassword());
         return userRepository.save(user);
     }
     @PostMapping("/{userId}/todos")

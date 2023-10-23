@@ -1,4 +1,4 @@
-package com.example.TodoApp.request;
+package com.TodoApp.request;
 
 public class AddTodoRequest {
     private String content;
