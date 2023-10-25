@@ -1,5 +1,6 @@
 package com.TodoApp.model;
 
+import com.TodoApp.dto.TodoRecord;
 import lombok.*;
 
 import java.util.ArrayList;

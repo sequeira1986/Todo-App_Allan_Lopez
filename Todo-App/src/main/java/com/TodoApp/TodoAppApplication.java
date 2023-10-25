@@ -1,7 +1,6 @@
 package com.TodoApp;
 
-import com.TodoApp.repository.TodoRepository;
-import com.TodoApp.repository.UserRepository;
+import com.TodoApp.Repositories.UserRepositories;
 import com.TodoApp.model.Todo;
 import com.TodoApp.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,9 +11,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 	public class TodoAppApplication implements CommandLineRunner {
 	@Autowired
-	private UserRepository userRepository;
+	private UserRepositories userRepository;
 	@Autowired
-	private TodoRepository todoRepository;
+	private UserRepositories todoRepository;
 	public static void main(String[] args) {
 		SpringApplication.run(TodoAppApplication.class, args);
 	}

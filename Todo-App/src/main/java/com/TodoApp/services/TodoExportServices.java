@@ -1,9 +1,8 @@
 package com.TodoApp.services;
-
+import com.TodoApp.Repositories.TodoRepositories;
+import com.TodoApp.dto.TodoRecord;
 import com.TodoApp.model.Todo;
 import com.TodoApp.model.TodoExport;
-import com.TodoApp.model.TodoRecord;
-import com.TodoApp.repository.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,21 +11,21 @@ import java.util.List;
 @Service
 public class TodoExportServices {
     @Autowired
-    TodoRepository todoRepository;
-    public TodoExport exportAllTodo(){
+    TodoRepositories taskRepositories;
+
+    public TodoExport exportAllTask() {
+
         TodoExport export = new TodoExport();
-        List<Todo> todoList = todoRepository.findAll();
-        
-        for(Todo todo:todoList){
+        List<Todo> taskList = taskRepositories.findAll();
+        for (Todo todo : taskList) {
             TodoRecord record = TodoRecord.builder()
-                   .duedate(todo.getStatus()).build();
-            export.getTodoRecordList().add(record);
+                    .idtodo(todo.getId()).title(todo.getContent()).duedate(todo.getDueDate()).status(todo.getStatus())
+                    .duedate(todo.getDuedate()).iduser(todo.getId())
+                    .build();
 
             TodoRecord.todoRecordList.add(record);
-
-
         }
         return export;
-    }
 
+    }
 }

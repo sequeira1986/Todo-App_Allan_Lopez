@@ -1,9 +1,9 @@
 package com.TodoApp.services;
 
+import com.TodoApp.Repositories.UserRepositories;
 import com.TodoApp.dto.UserExport;
 import com.TodoApp.dto.UserRecord;
 import com.TodoApp.model.User;
-import com.TodoApp.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
@@ -11,7 +11,7 @@ import java.util.List;
 public class UserExportService {
 
     @Autowired
-    UserRepository userRepository;
+    UserRepositories userRepository;
 
     public UserExport exportAllUsers() {
         UserExport userExport = new UserExport();
