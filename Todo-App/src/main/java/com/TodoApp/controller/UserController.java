@@ -36,8 +36,15 @@ public class UserController {
         return user;
     }
 
+    @PostMapping
+    public UserRecord createUser(@RequestBody UserRecord user) {
+        // TODO
+
+        return null;
+    }
+
     @PutMapping(value = "/{id}")
-    public UserRecord updateUser(@RequestBody UserRecord user) {
+    public UserRecord updateUser(@PathVariable Long id, @RequestBody UserRecord user) {
         // TODO
 
         return null;
