@@ -10,14 +10,14 @@ import java.util.List;
 
 @Repository
 public interface UserRepositories extends JpaRepository<User,Long> {
-    List<User> findAllByFirstnameOrSurename(String firstname, String surename);
+    List<User> findAllByFirstNameOrSurname(String firstname, String surname);
 
     @Query
-    List<User>findAllByFirstnameContaining(String firstname, Pageable page);
+    List<User>findAllByFirstNameContaining(String firstname, Pageable page);
     @Query
-    List<User>findByEmailAddress(String emailAddress);
+    List<User>findByEmail(String email);
     @Query
-    List<User>findByPhone(Long phone);
+    List<User>findByPhone(String phone);
 
 
 

@@ -25,7 +25,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 		user.setSurname("SurnameTest");
 
 		Todo todo = new Todo();
-		todo.setContent("ver video en YT");
+		todo.setDescription("ver video en YT");
 		todo.setUser(user);
 
 		user.getTodoList().add(todo);

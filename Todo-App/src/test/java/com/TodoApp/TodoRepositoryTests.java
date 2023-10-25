@@ -1,6 +1,7 @@
 package com.TodoApp;
 import com.TodoApp.Repositories.TodoRepositories;
 import com.TodoApp.model.Todo;
+import java.util.Optional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -20,25 +21,19 @@ public class TodoRepositoryTests {
     //findById , findByTitle, findByDescription, findByStatus
     @Test
     void loadTaskById() {
-        List<Todo> taskList = repositories.findById(1);
-        assertThat(taskList).isNotEmpty();
-    }
-
-    @Test
-    void loadTaskByTitle() {
-        List<Todo> taskList = repositories.findByTitle("pracovat");
+        Optional<Todo> taskList = repositories.findById(1);
         assertThat(taskList).isNotEmpty();
     }
 
     @Test
     void loadTaskByDescription() {
-        List<Todo> taskList = repositories.findByDescription("pozerat yt");
+        List<Todo> taskList = repositories.findByDescription("Spravit daco");
         assertThat(taskList).isNotEmpty();
     }
 
     @Test
     void loadTaskByStatus() {
-        List<Todo> taskList = repositories.findByStatus("zacate");
+        List<Todo> taskList = repositories.findByStatus("en poceso");
         assertThat(taskList).isNotEmpty();
     }
 

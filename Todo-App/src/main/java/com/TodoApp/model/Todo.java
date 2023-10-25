@@ -9,8 +9,10 @@ public class Todo {
     @Column(name = "id_task")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column(name = "title")
+    private String title;
     @Column(name = "description")
-    private String content;
+    private String description;
 
     @Column(name = "status")
     private String status;
@@ -32,7 +34,7 @@ public class Todo {
 
     public Todo(Long id, String content, String status, String duedate, String updatedate, Boolean completed, User user) {
         this.id = id;
-        this.content = content;
+        this.description = content;
         this.status = status;
         this.dueDate = duedate;
         this.updateDate = updatedate;
@@ -48,12 +50,12 @@ public class Todo {
         this.id = id;
     }
 
-    public String getContent() {
-        return content;
+    public String getDescription() {
+        return description;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getStatus() {

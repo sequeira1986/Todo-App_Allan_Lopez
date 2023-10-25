@@ -21,8 +21,13 @@ public class TodoService {
         if (todoOptional.isEmpty()) {
             throw new IllegalArgumentException("Task nebol najdeny");
         }
-        TodoRecord record = new TodoRecord();
-        return record;
+
+        return TodoRecord.builder()
+                .iduser(todoOptional.get().getUser().getId())
+                .title(todoOptional.get().getDescription())
+                .status(todoOptional.get().getStatus())
+                .duedate(todoOptional.get().getDuedate())
+                .build();
     }
     public TodoRecord putTodo(Long idtodo){
         Optional<Todo>todoOptional=todoRepositories.findById(idtodo);

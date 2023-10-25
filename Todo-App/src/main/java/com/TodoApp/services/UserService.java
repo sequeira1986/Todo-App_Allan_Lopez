@@ -24,9 +24,13 @@ public class UserService {
         if (userOptional.isEmpty()) {
             throw new IllegalArgumentException("User nebol najdeny");
         }
-        UserRecord record = new UserRecord();
 
-        return record;
+        return UserRecord.builder()
+                .firstName(userOptional.get().getFirstName())
+                .sureName(userOptional.get().getSurname())
+                .email(userOptional.get().getEmail())
+                .phone(userOptional.get().getPhone())
+                .build();
     }
 
     public CreateUser createUser() {

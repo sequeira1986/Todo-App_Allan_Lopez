@@ -19,7 +19,7 @@ public class TodoExportServices {
         List<Todo> taskList = taskRepositories.findAll();
         for (Todo todo : taskList) {
             TodoRecord record = TodoRecord.builder()
-                    .idtodo(todo.getId()).title(todo.getContent()).duedate(todo.getDueDate()).status(todo.getStatus())
+                    .idtodo(todo.getId()).title(todo.getDescription()).duedate(todo.getDueDate()).status(todo.getStatus())
                     .duedate(todo.getDuedate()).iduser(todo.getId())
                     .build();
 

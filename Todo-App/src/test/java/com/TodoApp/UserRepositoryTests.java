@@ -24,7 +24,7 @@ public class UserRepositoryTests {
     @Test
     void findAllByNameOrSurname() {
         Pageable pageable = PageRequest.of(0, 2, Sort.by("prve meno"));
-        List<User> userList = repository.findAllByFirstnameContaining("se", pageable);
+        List<User> userList = repository.findAllByFirstNameContaining("se", pageable);
         assertThat(userList).hasSize(1);
 
     }
@@ -36,10 +36,10 @@ public class UserRepositoryTests {
 
     @Test
     void testLoadUsersByFirstNameOrSurename() {
-        List<User> userList = repository.findAllByFirstnameOrSurename("Pedro", "macho");
+        List<User> userList = repository.findAllByFirstNameOrSurname("Pedro", "macho");
     }
     @Test
     void testLoadUsersByPhone(){
-        List<User>userList=repository.findByPhone(918528099L);
+        List<User>userList=repository.findByPhone("918528099");
     }
 }

@@ -17,10 +17,8 @@ public class User {
     @Column(name = "surname")
     private String surname;
     @Column(name = "phone")
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private String phone;
     @Column(name = "email")
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private String email;
     @OneToMany(mappedBy = "user",
             cascade = CascadeType.ALL)
